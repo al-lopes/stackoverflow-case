@@ -1,6 +1,6 @@
 models:
   - name: stg_tags    
-    description: dim_tags staging table from tags table in Stackoverflow public dataset
+    description: Dimension table from tags table in Stackoverflow public dataset
     columns:
       - name: tag_id
         description: The unique key for each tag.

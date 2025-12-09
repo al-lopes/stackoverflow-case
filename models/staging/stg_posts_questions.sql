@@ -5,4 +5,4 @@ SELECT id as question_id
 FROM 
   {{source('stackoverflow', 'posts_questions')}} AS posts_questions
 WHERE
-  EXTRACT(YEAR FROM creation_date) = 2022;
+  EXTRACT(YEAR FROM creation_date) = 2022
