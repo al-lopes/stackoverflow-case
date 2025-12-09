@@ -1,0 +1,9 @@
+models:
+  - name: stg_posts_questions
+    description: Stackoverflow posts questions data from 2022 (last year with data available), one row per question.
+    columns:
+      - name: question_id
+        description: The unique key for each question.
+        data_tests:
+          - not_null
+          - unique
