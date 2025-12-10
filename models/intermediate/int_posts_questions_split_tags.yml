@@ -1,0 +1,20 @@
+models:
+  - name: int_posts_questions_split_tags
+    description: Stackoverflow posts questions data from 2022 (last year with data available), one row per question-tag combination.
+    columns:
+      - name: question_id
+        description: The unique key for each question.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments: 
+                to: ref('stg_posts_questions')
+                field: question_id
+      - name: tag_id
+        description: 
+        data_tests:
+          - not_null
+          - relationships:
+              arguments: 
+                to: ref('stg_tags')
+                field: tag_id

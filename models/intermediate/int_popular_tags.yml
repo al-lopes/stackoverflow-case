@@ -1,0 +1,13 @@
+models:
+  - name: int_popular_tags   
+    description: Popular topics table from the last year with data available
+    columns:
+      - name: tag_id
+        description: The unique key for each tag.
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('stg_tags')
+                field: tag_id
