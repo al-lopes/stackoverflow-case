@@ -1,0 +1,13 @@
+models:
+  - name: questions_no_answer
+    description: Number of questions without answers per tag
+    columns:
+      - name: tag_id
+        description: The unique key for each tag.
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('stg_tags')
+                field: tag_id
