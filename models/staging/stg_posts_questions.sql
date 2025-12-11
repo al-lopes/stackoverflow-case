@@ -2,6 +2,7 @@ SELECT id as question_id
   , creation_date
   , tags
   , answer_count
+  , view_count
 FROM 
   {{source('stackoverflow', 'posts_questions')}} AS posts_questions
 WHERE
