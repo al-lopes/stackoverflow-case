@@ -13,7 +13,7 @@ popular_tags as
   SELECT tag_id
   , tag
   , question_id
-  FROM {{ref('int_posts_questions_split_tags')}}
+  FROM {{ref('int_questions_split_tags_counts')}}
   WHERE answer_count = 0
 )
 
@@ -47,4 +47,3 @@ SELECT *
   , ROUND(questions_no_answer_count/questions_count, 2) AS pct_questions_no_answer
   , row_number() over(ORDER BY 0.7*rnk_questions_count + 0.3*rnk_total_views) AS final_rank
 FROM ranking_tags
-ORDER BY final_rank

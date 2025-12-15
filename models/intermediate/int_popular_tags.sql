@@ -5,7 +5,7 @@ posts_questions_split_tags as
   , tag
   , question_id
   , view_count
-  FROM {{ref('int_posts_questions_split_tags')}}
+  FROM {{ref('int_questions_split_tags_counts')}}
 )
 
 SELECT tag_id
