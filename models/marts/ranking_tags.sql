@@ -44,6 +44,5 @@ FROM aux_ranking_tags
 )
 
 SELECT *
-  , ROUND(questions_no_answer_count/questions_count, 2) AS pct_questions_no_answer
   , row_number() over(ORDER BY 0.7*rnk_questions_count + 0.3*rnk_total_views) AS final_rank
 FROM ranking_tags
