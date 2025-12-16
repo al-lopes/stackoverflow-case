@@ -1,21 +1,21 @@
 # stackoverflow-case
-## Objetivo do Projeto
-Modelar os tópicos populares do Stack Overflow com poucas respostas, utilizando os dados públicos do Google BigQuery.
+## Project Goal
+Modeling popular Stack Overflow topics with low response rate, using Google BigQuery public data.
 
-## Instruções de execução
-Após copiar o repositório localmente, é necessário configurar a ligação ao BigQuery:
+## Execution Instructions
+After cloning the repository locally, you need to configure the connection to BigQuery:
 ```
 dbt init
 ```
-Garantir que a ligação está ok:
+Ensure that the connection is working properly:
 ```
 dbt test
 ```
-Para aplicar os modelos na BD:
+Apply the models to the database:
 ```
 dbt build
 ```
-Para aplicar apenas uma parte do projeto:
+To run only a specific part of the project:
 ```
 dbt run --select "caminho\do\modelo"
 ```
