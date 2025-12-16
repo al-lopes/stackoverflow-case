@@ -3,7 +3,7 @@ popular_tags as
 (
   SELECT tag_id
   , tag
-  , questions_count
+  , total_questions
   , total_views
   FROM {{ref('int_popular_tags')}}
 )
@@ -21,22 +21,22 @@ popular_tags as
 (
 SELECT p_tags.tag_id
   , p_tags.tag
-  , p_tags.questions_count
+  , p_tags.total_questions
   , p_tags.total_views
   , COUNT(post_questions_split.question_id) AS questions_no_answer_count
 FROM popular_tags AS p_tags
 LEFT JOIN posts_questions_split_tags AS post_questions_split
   ON p_tags.tag_id = post_questions_split.tag_id
-GROUP BY p_tags.tag_id, p_tags.tag, p_tags.questions_count, p_tags.total_views
-ORDER BY p_tags.questions_count DESC
+GROUP BY p_tags.tag_id, p_tags.tag, p_tags.total_questions, p_tags.total_views
+ORDER BY p_tags.total_questions DESC
 )
 
 , ranking_tags as 
 (
 SELECT tag_id
   , tag
-  , questions_count
-  , rank() over (order by questions_count desc) as rnk_questions_count
+  , total_questions 
+  , rank() over (order by total_questions desc) as rnk_total_questions
   , total_views
   , rank() over (order by total_views desc) as rnk_total_views
   , questions_no_answer_count
@@ -44,5 +44,5 @@ FROM aux_ranking_tags
 )
 
 SELECT *
-  , row_number() over(ORDER BY 0.7*rnk_questions_count + 0.3*rnk_total_views) AS final_rank
+  , row_number() over(ORDER BY 0.7*rnk_total_questions + 0.3*rnk_total_views) AS final_rank
 FROM ranking_tags
