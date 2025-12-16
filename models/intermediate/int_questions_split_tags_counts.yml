@@ -7,19 +7,7 @@ models:
         data_tests:
           - not_null
           - unique
-      - name: question_id
-        description: The unique key for each question.
-        data_tests:
-          - not_null
           - relationships:
               arguments: 
-                to: ref('stg_posts_questions')
-                field: question_id
-      - name: tag_id
-        description: 
-        data_tests:
-          - not_null
-          - relationships:
-              arguments: 
-                to: ref('stg_tags')
-                field: tag_id
+                to: ref('int_questions_split_tags')
+                field: question_tag_id
